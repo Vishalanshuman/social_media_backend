@@ -103,7 +103,7 @@ This backend platform allows users to share and rate recipes, built with Django 
 To process asynchronous tasks (image resizing, email sending, data uploading), start a Celery worker:
 
 ```bash
-celery -A recipe_platform worker --loglevel=info
+celery -A config worker --loglevel=info --pool=solo
 ```
 
 ### Starting Celery Beat
@@ -111,7 +111,7 @@ celery -A recipe_platform worker --loglevel=info
 To schedule tasks, run Celery Beat:
 
 ```bash
-celery -A recipe_platform beat --loglevel=info
+celery -A config beat --loglevel=info
 ```
 
 ## API Endpoints
