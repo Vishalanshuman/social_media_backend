@@ -39,32 +39,32 @@ This backend platform allows users to share and rate recipes, built with Django 
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-repo/social_media_backend.git
+   git clone https://github.com/your-repo/recipe-platform-backend.git
    cd recipe-platform-backend
    ```
 
 2. Create a virtual environment:
 
-   \`\`\`bash
+   ```bash
    python3 -m venv venv
    source venv/bin/activate
-   \`\`\`
+   ```
 
 3. Install dependencies:
 
-   \`\`\`bash
+   ```bash
    pip install -r requirements.txt
-   \`\`\`
+   ```
 
 4. Setup PostgreSQL database:
 
-   \`\`\`bash
+   ```bash
    psql -U postgres -c "CREATE DATABASE socialDB;"
-   \`\`\`
+   ```
 
 5. Configure your `.env` file with the following:
 
-   \`\`\`bash
+   ```bash
    DATABASE_NAME=socialDB
    DATABASE_USER=postgres
    DATABASE_PASSWORD=root
@@ -76,25 +76,25 @@ This backend platform allows users to share and rate recipes, built with Django 
    AWS_SECRET_ACCESS_KEY=your_aws_secret_key
    AWS_STORAGE_BUCKET_NAME=your_s3_bucket_name
    DEFAULT_FROM_EMAIL=your_email@example.com
-   \`\`\`
+   ```
 
 6. Apply migrations:
 
-   \`\`\`bash
+   ```bash
    python manage.py migrate
-   \`\`\`
+   ```
 
 7. Create a superuser:
 
-   \`\`\`bash
+   ```bash
    python manage.py createsuperuser
-   \`\`\`
+   ```
 
 8. Start the development server:
 
-   \`\`\`bash
+   ```bash
    python manage.py runserver
-   \`\`\`
+   ```
 
 ## Usage
 
@@ -102,56 +102,56 @@ This backend platform allows users to share and rate recipes, built with Django 
 
 To process asynchronous tasks (image resizing, email sending, data uploading), start a Celery worker:
 
-\`\`\`bash
-celery -A config worker --loglevel=info --pool=solo
-\`\`\`
+```bash
+celery -A recipe_platform worker --loglevel=info
+```
 
 ### Starting Celery Beat
 
 To schedule tasks, run Celery Beat:
 
-`bash`
-celery -A config beat --loglevel=info
-
+```bash
+celery -A recipe_platform beat --loglevel=info
+```
 
 ## API Endpoints
 
 ### Authentication
 
 - **Signup**:  
-  `POST /auth/signup/`  
+  \`POST /auth/signup/\`  
   Registers a new user.
 
 - **Login**:  
-  `POST /auth/login/`  
+  \`POST /auth/login/\`  
   Logs in and returns tokens.
 
 - **Token Refresh**:  
-  `POST /auth/token/refresh/`  
+  \`POST /auth/token/refresh/\`  
   Refreshes the JWT access token.
 
 ### Recipe APIs
 
 - **List Recipes**:  
-  `GET /recipes/`  
+  \`GET /recipes/\`  
   Fetches the list of recipes.
 
 - **Recipe Details**:  
-  `GET /recipes/{id}/`  
+  \`GET /recipes/{id}/\`  
   Fetches details for a specific recipe.
 
 - **Create Recipe** (Sellers only):  
-  `POST /recipes/`  
+  \`POST /recipes/\`  
   Adds a new recipe.
 
 ### Rating APIs
 
 - **Rate Recipe**:  
-  `POST /recipes/{id}/rate/`  
+  \`POST /recipes/{id}/rate/\`  
   Allows a user to rate a recipe.
 
 - **Get Ratings**:  
-  `GET /recipes/{id}/ratings/`  
+  \`GET /recipes/{id}/ratings/\`  
   Fetches all ratings for a recipe.
 
 ### Throttling
@@ -165,13 +165,21 @@ celery -A config beat --loglevel=info
 
 Sellers can upload images when adding recipes. The image is resized asynchronously using Celery to ensure the uploaded images are optimized for performance. The task is defined as:
 
-
+```python
+@shared_task
+def resize_recipe_image(image_path):
+    ...
+```
 
 ### Daily Emails
 
 A daily email task is scheduled to send recipe updates to all users (except on weekends). The task is defined as:
 
-
+```python
+@shared_task
+def send_daily_emails():
+    ...
+```
 
 ## Scheduled Services
 
@@ -179,5 +187,9 @@ A daily email task is scheduled to send recipe updates to all users (except on w
 
 Every week, user data is retrieved from the database and uploaded to Amazon S3 in CSV format. The task is defined as:
 
-
+```python
+@shared_task
+def upload_user_data_to_s3():
+    ...
+```
 
