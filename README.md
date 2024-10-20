@@ -39,7 +39,7 @@ This backend platform allows users to share and rate recipes, built with Django 
 1. Clone the repository:
 
    \`\`\`bash
-   git clone https://github.com/your-repo/recipe-platform-backend.git
+   git clone https://github.com/your-repo/social_media_backend.git
    cd recipe-platform-backend
    \`\`\`
 
@@ -192,5 +192,4 @@ Every week, user data is retrieved from the database and uploaded to Amazon S3 i
 def upload_user_data_to_s3():
     ...
 \`\`\`
-
 
