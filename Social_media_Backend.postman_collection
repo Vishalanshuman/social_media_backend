@@ -156,7 +156,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"rating\": 4,\n  \"recipe\": 2\n}",
+							"raw": "{\n  \"rating\": 4}",
 							"options": {
 								"raw": {
 									"language": "json"
