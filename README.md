@@ -119,7 +119,7 @@ celery -A recipe_platform beat --loglevel=info
 ### Authentication
 
 - **Signup**:  
-  \`POST /auth/signup/\`  
+  `POST /auth/signup/\`  
   Registers a new user.
 
 - **Login**:  
@@ -127,7 +127,7 @@ celery -A recipe_platform beat --loglevel=info
   Logs in and returns tokens.
 
 - **Token Refresh**:  
-  \`POST /auth/token/refresh/\`  
+  `POST /auth/token/refresh/`  
   Refreshes the JWT access token.
 
 ### Recipe APIs
@@ -165,21 +165,13 @@ celery -A recipe_platform beat --loglevel=info
 
 Sellers can upload images when adding recipes. The image is resized asynchronously using Celery to ensure the uploaded images are optimized for performance. The task is defined as:
 
-\`\`\`python
-@shared_task
-def resize_recipe_image(image_path):
-    ...
-\`\`\`
+
 
 ### Daily Emails
 
 A daily email task is scheduled to send recipe updates to all users (except on weekends). The task is defined as:
 
-\`\`\`python
-@shared_task
-def send_daily_emails():
-    ...
-\`\`\`
+
 
 ## Scheduled Services
 
@@ -187,9 +179,5 @@ def send_daily_emails():
 
 Every week, user data is retrieved from the database and uploaded to Amazon S3 in CSV format. The task is defined as:
 
-\`\`\`python
-@shared_task
-def upload_user_data_to_s3():
-    ...
-\`\`\`
+
 
