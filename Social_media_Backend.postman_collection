@@ -1,0 +1,173 @@
+{
+	"info": {
+		"_postman_id": "93d23e58-7104-4afd-bbde-ae53598fa64f",
+		"name": "Social_Blinkit_Backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "25072958"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"vishal\",\r\n    \"email\":\"vishal@email.com\",\r\n    \"role\":\"customer\",\r\n    \"password\":\"password\",\r\n    \"confirm_password\":\"password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://127.0.0.1:8000/auth/signup/"
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username_or_email\":\"vishal@email.com\",\r\n    \"password\":\"password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://127.0.0.1:8000/auth/login/"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Recipes",
+			"item": [
+				{
+					"name": "Get a Recipe",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI5MjY1MTkzLCJpYXQiOjE3MjkyNjMzOTMsImp0aSI6IjQyNTEzNTQzYTc0ZTQxYzI5Zjk4MDZkNTQ5ODk4MTMwIiwidXNlcl9pZCI6MX0.RowI8urSNF4if6Q2ldwVmwrd7fzK-MN_g72ntOYAGhQ"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8000/recipes/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Create a Recipe",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI5MjY1MTkzLCJpYXQiOjE3MjkyNjMzOTMsImp0aSI6IjQyNTEzNTQzYTc0ZTQxYzI5Zjk4MDZkNTQ5ODk4MTMwIiwidXNlcl9pZCI6MX0.RowI8urSNF4if6Q2ldwVmwrd7fzK-MN_g72ntOYAGhQ"
+							}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer <your_access_token>"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Chiken Tikka",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "This is a recipe for fluffy pancakes.",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "postman-cloud:///1ef8d5fe-2f6f-4660-9205-f03dabb8c611"
+								},
+								{
+									"key": "seller",
+									"value": "1",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": "http://localhost:8000/recipes/"
+					},
+					"response": []
+				},
+				{
+					"name": "All Recipes",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI5MjY1MTkzLCJpYXQiOjE3MjkyNjMzOTMsImp0aSI6IjQyNTEzNTQzYTc0ZTQxYzI5Zjk4MDZkNTQ5ODk4MTMwIiwidXNlcl9pZCI6MX0.RowI8urSNF4if6Q2ldwVmwrd7fzK-MN_g72ntOYAGhQ"
+							},
+							{
+								"key": "Cookie",
+								"value": "csrftoken=HUd3blcGamn5YbbcHYLR80QilFoDXXyj"
+							}
+						],
+						"url": "http://localhost:8000/recipes/"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Rating",
+			"item": [
+				{
+					"name": "rate a recipe",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI5NDMwMjkyLCJpYXQiOjE3MjkzNDM4OTIsImp0aSI6IjE4ZmNhNGE2MmViNDRkM2U4M2EzNzkxMmM0OGFlYTcyIiwidXNlcl9pZCI6M30._xYyhMYb1hgYa1UHhjnNL9Qz6eDE624lGBNq1mzEYHM"
+							}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"rating\": 4,\n  \"recipe\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8000/ratings/4/rate/"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
