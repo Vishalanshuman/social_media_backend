@@ -1,6 +1,6 @@
 from rest_framework import generics, permissions
 from .models import Recipe
-from .serializers import RecipeSerializer,GETRecipeSerializer
+from .serializers import RecipeSerializer
 from apps.common.permissions import IsSeller
 from rest_framework.response import Response
 from rest_framework import status
@@ -21,7 +21,7 @@ class RecipeListView(generics.ListCreateAPIView):
 
 class RecipeDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Recipe.objects.all()
-    serializer_class = GETRecipeSerializer
+    serializer_class = RecipeSerializer
     permission_classes = [permissions.IsAuthenticated, IsSeller]
 
     def perform_update(self, serializer):
