@@ -103,27 +103,27 @@ This backend platform allows users to share and rate recipes, built with Django 
 To process asynchronous tasks (image resizing, email sending, data uploading), start a Celery worker:
 
 \`\`\`bash
-celery -A recipe_platform worker --loglevel=info
+celery -A config worker --loglevel=info --pool=solo
 \`\`\`
 
 ### Starting Celery Beat
 
 To schedule tasks, run Celery Beat:
 
-\`\`\`bash
-celery -A recipe_platform beat --loglevel=info
-\`\`\`
+`bash`
+celery -A config beat --loglevel=info
+
 
 ## API Endpoints
 
 ### Authentication
 
 - **Signup**:  
-  `POST /auth/signup/\`  
+  `POST /auth/signup/`  
   Registers a new user.
 
 - **Login**:  
-  \`POST /auth/login/\`  
+  `POST /auth/login/`  
   Logs in and returns tokens.
 
 - **Token Refresh**:  
@@ -133,25 +133,25 @@ celery -A recipe_platform beat --loglevel=info
 ### Recipe APIs
 
 - **List Recipes**:  
-  \`GET /recipes/\`  
+  `GET /recipes/`  
   Fetches the list of recipes.
 
 - **Recipe Details**:  
-  \`GET /recipes/{id}/\`  
+  `GET /recipes/{id}/`  
   Fetches details for a specific recipe.
 
 - **Create Recipe** (Sellers only):  
-  \`POST /recipes/\`  
+  `POST /recipes/`  
   Adds a new recipe.
 
 ### Rating APIs
 
 - **Rate Recipe**:  
-  \`POST /recipes/{id}/rate/\`  
+  `POST /recipes/{id}/rate/`  
   Allows a user to rate a recipe.
 
 - **Get Ratings**:  
-  \`GET /recipes/{id}/ratings/\`  
+  `GET /recipes/{id}/ratings/`  
   Fetches all ratings for a recipe.
 
 ### Throttling
