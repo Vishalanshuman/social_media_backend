@@ -65,9 +65,9 @@ This backend platform allows users to share and rate recipes, built with Django 
 5. Configure your `.env` file with the following:
 
    ```bash
-   DATABASE_NAME=socialDB
-   DATABASE_USER=postgres
-   DATABASE_PASSWORD=root
+   DATABASE_NAME=DB_NAME
+   DATABASE_USER=DATABASE_USER
+   DATABASE_PASSWORD=DATABASE_PASSWORD
    DATABASE_HOST=localhost
    DATABASE_PORT=5432
    SECRET_KEY=your_secret_key
@@ -75,7 +75,8 @@ This backend platform allows users to share and rate recipes, built with Django 
    AWS_ACCESS_KEY_ID=your_aws_access_key
    AWS_SECRET_ACCESS_KEY=your_aws_secret_key
    AWS_STORAGE_BUCKET_NAME=your_s3_bucket_name
-   DEFAULT_FROM_EMAIL=your_email@example.com
+   EAMIL_USER_USER=your_email@example.com
+   EMAIL_HOST_PASSWORD='xyz'
    ```
 
 6. Apply migrations:
