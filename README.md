@@ -38,10 +38,10 @@ This backend platform allows users to share and rate recipes, built with Django 
 
 1. Clone the repository:
 
-   \`\`\`bash
+   ```bash
    git clone https://github.com/your-repo/social_media_backend.git
    cd recipe-platform-backend
-   \`\`\`
+   ```
 
 2. Create a virtual environment:
 
