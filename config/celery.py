@@ -29,7 +29,7 @@ app.conf.beat_schedule = {
 # app.conf.beat_schedule = {
 #     'send-daily-emails': {
 #         'task': 'apps.common.tasks.send_daily_emails',
-#         'schedule': 10.0,  # Run every 10 seconds
+#         'schedule': 10.0, 
 #     },
 # }
 app.conf.broker_url = 'redis://localhost:6379/0'

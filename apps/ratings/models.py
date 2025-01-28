@@ -11,6 +11,7 @@ class Rating(models.Model):
 
     class Meta:
         unique_together = ('recipe', 'customer') 
+        db_table = "comments"
 
     def __str__(self):
         return self.id

@@ -42,7 +42,7 @@ def send_daily_emails():
     message = "Here are today's top-rated recipes!"
     users = User.objects.all()
 
-    recipients = [user.email for user in users]  # Fetch from your user model
+    recipients = [user.email for user in users] 
 
     send_mail(
         subject,
